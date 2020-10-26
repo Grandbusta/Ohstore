@@ -3,6 +3,7 @@ import './index.css'
 import ProductPage from './pages/productpage'
 import Shop from './pages/shop'
 import Navs from './components/navbar'
+import Cart from './components/cartlist'
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
       </Route>
       <Route path='/products'>
         <ProductPage/>
+      </Route>
+      <Route path='/cart'>
+        <Cart/>
       </Route>
     </Router>  
   );

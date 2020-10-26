@@ -26,8 +26,10 @@ function Navs() {
                         </Button>
                     </div>
                     <Button style={{}} variant='outline-primary'>
-                    <FaShoppingCart/>
-                    <strong style={{marginLeft:'1rem'}}>5</strong>
+                        <Link to='/cart'>
+                            <FaShoppingCart/>
+                            <strong style={{marginLeft:'1rem'}}>5</strong>
+                        </Link>
                     </Button>
                     <Image src={Avi} style={{width:'40px',height:'40px',borderRadius:'0.7rem'}}></Image>
                 </div>
