@@ -20,7 +20,7 @@ function Cartitem() {
                     </div>
                 </td>
                 <td>$250</td>
-                <td><Button variant='danger'>Remove</Button></td>
+                <td><Button variant='danger' size='sm'>Remove</Button></td>
             </tr>
     )
 }

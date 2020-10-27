@@ -25,12 +25,12 @@ function Navs() {
                             <FiSearch/>
                         </Button>
                     </div>
+                    <Link to='/cart'>
                     <Button style={{}} variant='outline-primary'>
-                        <Link to='/cart'>
                             <FaShoppingCart/>
                             <strong style={{marginLeft:'1rem'}}>5</strong>
-                        </Link>
                     </Button>
+                    </Link>
                     <Image src={Avi} style={{width:'40px',height:'40px',borderRadius:'0.7rem'}}></Image>
                 </div>
             </div>

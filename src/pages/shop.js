@@ -1,6 +1,7 @@
 import React from 'react'
 import Product from '../components/product'
 
+
 function Shop() {
     return (
         <div style={{width:'100%',margin:'auto',marginTop:'2rem',marginBottom:'6rem'}}>

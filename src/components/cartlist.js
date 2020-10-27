@@ -9,16 +9,20 @@ function Cartlist() {
                 <div style={{backgroundColor:'#49a6e9',width:'4rem',height:'0.25rem',margin:'auto'}}></div>
             </div>
             <table style={{width:'100%'}}>
-                <tr>
-                    <th>Product</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th></th>
-                </tr>
-                <CartItem/>
-                <CartItem/>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <CartItem/>
+                    <CartItem/>
+                </tbody>
             </table>
         </div>
     )
