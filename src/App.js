@@ -5,6 +5,8 @@ import Shop from './pages/shop'
 import Navs from './components/navbar'
 import Cart from './pages/cart'
 import Checkout from './pages/checkout'
+import Home from './pages/home'
+import Category from './pages/category'
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 
 function App() {
@@ -12,18 +14,24 @@ function App() {
     <Router>
       <Navs/>
       <Route exact path='/'>
-        <Shop/>
+        <Home/>
       </Route>
-      <Route path='/p/:id' children={<ProductPage/>}>
+      <Route path='/shop'>
+        <Shop title='Shop'/>
       </Route>
-      <Route path='/products'>
-        <ProductPage/>
+      <Route path='/p/:name' children={<ProductPage/>}>
+      </Route>
+      <Route path='/c/:category'>
+        <Category/>
       </Route>
       <Route path='/cart'>
         <Cart/>
       </Route>
       <Route path='/checkout'>
         <Checkout/>
+      </Route>
+      <Route path='*'>
+        <div>Not available</div>
       </Route>
     </Router>  
   );

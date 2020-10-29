@@ -15,7 +15,6 @@ function Cartsum() {
                 <div style={{display:'flex',alignItems:'center',marginBottom:'1.5rem',gap:'1rem'}}>
                     <FaShoppingCart/>
                     <h5>Cart Summary(<Link to='/cart' style={{fontSize:'14px'}}>edit</Link>)</h5>
-                    <h6></h6>
                 </div>
             <div style={{width:'100%'}}>
                 <section>

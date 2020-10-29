@@ -8,14 +8,18 @@ import {FiSearch} from 'react-icons/fi'
 function Navs() {
     return (
         <div>
-            <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'1rem 2rem'}}>
+            <div style={{
+                display:'flex',
+                alignItems:'center',
+                justifyContent:'space-between',
+                padding:'1rem 2rem'}}>
                 <div style={{display:'flex',gap:'1rem',alignItems:'center',justifyContent:'center'}}><h5>OhStore</h5></div>
                 <div>
                     <ul style={{textDecoration:'none',listStyle:'none',display:'flex',gap:'2rem'}}>
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to="/products">Electronics</Link></li>
-                        <li><Link to='/'>Bags</Link></li>
-                        <li><Link to=''>Shoes</Link></li>
+                        <li><Link to="/shop">Shop</Link></li>
+                        <li><Link to='/c/electronics'>Electronics</Link></li>
+                        <li><Link to='/c/clothes'>Phones</Link></li>
                     </ul>
                 </div>
                 <div style={{display:'flex',gap:'1rem',alignItems:'center'}}>

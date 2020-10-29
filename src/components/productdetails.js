@@ -1,5 +1,4 @@
 import React from 'react'
-import {useParams} from 'react-router-dom'
 import Pic from '../assets/dessert.jpg'
 import smc from '../assets/smallchops.jpg'
 import smc2 from '../assets/smallchops1.jpg'
