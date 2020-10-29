@@ -9,10 +9,10 @@ function Product() {
     let product=products.filter((product)=>{
         return product.link===name
     })
-    console.log(product)
+    console.log(product[0])
     return (
         <div>
-            <Productdetails/>
+            <Productdetails product={product[0]}/>
             <Reviews/>
         </div>
     )

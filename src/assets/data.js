@@ -60,3 +60,9 @@ export const products=[
         discountPrice:'$29.99'
     }
 ]
+
+export const product=[
+    {
+        
+    }
+]

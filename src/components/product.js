@@ -1,5 +1,4 @@
 import React from 'react'
-import Pro from '../assets/dessert.jpg'
 import {Button} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 

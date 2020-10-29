@@ -3,7 +3,6 @@ import Product from '../components/product'
 
 
 function Shop({title,products}) {
-    console.log(products)
     return (
         <div style={{width:'100%',margin:'auto',marginTop:'2rem',marginBottom:'6rem'}}>
             <div style={{marginBottom:'4rem',display:'flex',flexDirection:'column',alignItems:'center'}}>

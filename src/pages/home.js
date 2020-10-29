@@ -2,9 +2,9 @@ import React from 'react'
 import {Carousel,Button} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import {FiArrowRight} from 'react-icons/fi'
-import Shop from '../pages/shop'
-import Pic from '../assets/dessert.jpg'
-import Im from '../assets/smallchops.jpg'
+import Shop from '../components/shop'
+import Pic from '../assets/dessert4.jpg'
+import Im from '../assets/cocktails.jpg'
 import {products} from '../assets/data'
 
 function Home() {

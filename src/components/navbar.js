@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Image,Form,Button} from 'react-bootstrap'
-import Avi from '../assets/avi.jpg'
+import {Form,Button} from 'react-bootstrap'
 import {FaShoppingCart} from 'react-icons/fa'
 import {FiSearch} from 'react-icons/fi'
 
@@ -19,7 +18,7 @@ function Navs() {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to="/shop">Shop</Link></li>
                         <li><Link to='/c/electronics'>Electronics</Link></li>
-                        <li><Link to='/c/clothes'>Phones</Link></li>
+                        <li><Link to='/c/phones'>Phones</Link></li>
                     </ul>
                 </div>
                 <div style={{display:'flex',gap:'1rem',alignItems:'center'}}>
@@ -35,7 +34,7 @@ function Navs() {
                             <strong style={{marginLeft:'1rem'}}>5</strong>
                     </Button>
                     </Link>
-                    <Image src={Avi} style={{width:'40px',height:'40px',borderRadius:'0.7rem'}}></Image>
+                    
                 </div>
             </div>
         </div>
