@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button,Image} from 'react-bootstrap'
-import Avi from '../assets/avi.jpg'
+import Avi from '../assets/avi.png'
 
 function Review() {
     return (

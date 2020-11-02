@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {Form,Button} from 'react-bootstrap'
 import {FaShoppingCart} from 'react-icons/fa'
 import {FiSearch} from 'react-icons/fi'
+import Avi from '../assets/avi.png'
 
 function Navs() {
     return (
@@ -34,7 +35,7 @@ function Navs() {
                             <strong style={{marginLeft:'1rem'}}>5</strong>
                     </Button>
                     </Link>
-                    
+                    <img src={Avi} style={{width:'40px',height:'40px',borderRadius:'0.7rem'}}></img>
                 </div>
             </div>
         </div>
