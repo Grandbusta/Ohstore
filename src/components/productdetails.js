@@ -2,7 +2,6 @@ import React from 'react'
 import Pic from '../assets/dessert.jpg'
 import smc2 from '../assets/smallchops1.jpg'
 import {Button} from 'react-bootstrap'
-import{AiOutlineArrowUp} from 'react-icons/ai'
 
 function Productdetails({product}) {
     return (
@@ -32,7 +31,7 @@ function Productdetails({product}) {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia optio ullam consectetur eaque, modi cum libero deleniti praesentium illum odit et est architecto quibusdam, voluptatem perferendis. Dolores eveniet officia pariatur.
                     </p>
                     <div>
-                        <span>QTY: </span><Button variant='outline-secondary'> 23<AiOutlineArrowUp/></Button>
+                        <span>QTY: </span><Button variant='outline-secondary'> 23</Button>
                         <Button variant='primary' size='m' style={{marginLeft:'2rem'}}>Add to Cart</Button>
                     </div>
                 </div>
