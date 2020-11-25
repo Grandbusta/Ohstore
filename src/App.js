@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css'
 import ProductPage from './pages/productpage'
 import Shoppage from './pages/shoppage'
@@ -7,34 +7,98 @@ import Cart from './pages/cart'
 import Checkout from './pages/checkout'
 import Home from './pages/home'
 import Category from './pages/category'
-import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
+import Login from './pages/Login';
+import Register from './pages/register'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Notfound from './components/404';
+import Dashboard from './components/DashboardNav';
+import { baseLink } from './components/shared';
+import { Spinner } from "react-bootstrap";
+
 
 function App() {
-  return (
-    <Router>
-      <Navs/>
+  const [isAuth, ssAuth] = useState({ auth: false, details: {}, loading: true });
+  // const [details, sDetails] = useState(null);
+  const Authenticated = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={(props) => (
+      isAuth.auth === true ? <Component {...props} /> : <Redirect to={{
+        pathname: '/login',
+        state: { from: props.location }
+      }} />
+    )} />
+  );
+  const AuthLogin = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={(props) => (
+      isAuth.auth === true ? <Redirect to={{
+        pathname: '/dashboard',
+        state: { from: props.location }
+      }} /> : <Component {...props} />
+    )} />
+  )
+  useEffect(() => {
+    fetch(baseLink + 'users/auth', {
+      headers: {
+        "Authorization": "Bearer " + window.localStorage.getItem("token")
+      }
+    })
+      .then((resp) => {
+        console.log(resp)
+        return resp.json()
+      })
+      .then((resp) => {
+        console.log(resp)
+        if (!resp.success) {
+          window.localStorage.removeItem('token')
+          // return setErr(resp.message)
+          return ssAuth(prev => ({ ...prev,  loading: false }));
+
+        }
+        else {
+          ssAuth(prev => ({ ...prev, auth: resp.data.auth, details: resp.data.details, loading: false }));
+          // sDetails(true);
+          // console.log(isAuth);
+          return;
+        }
+      })
+  }, [])
+  return (<Router>
+
+    {isAuth.loading ? <Spinner animation="grow" /> : <React.Fragment>
+      <Navs auth={isAuth.auth} />
       <Switch>
         <Route exact path='/'>
-          <Home/>
+          <Home />
         </Route>
         <Route path='/shop'>
-          <Shoppage/>
+          <Shoppage />
         </Route>
-        <Route path='/p/:name' children={<ProductPage/>}>
+        <Route exact path='/p/:name' children={<ProductPage />}>
         </Route>
-        <Route path='/c/:category' children={<Category/>}>
+        <Route exact path='/c/:category' children={<Category />}>
         </Route>
-        <Route path='/cart'>
-          <Cart/>
+        {/* <Route path='/login'> */}
+        <AuthLogin exact path='/login' component={() => <Login />} />
+        {/* <Login /> */}
+        {/* </Route> */}
+        <Route path='/register'>
+          <Register />
         </Route>
-        <Route path='/checkout'>
-          <Checkout/>
+        <Route exact path='/cart'>
+          <Cart />
         </Route>
+        <Route exact path='/checkout'>
+          <Checkout />
+        </Route>
+        <Authenticated exact path='/dashboard' component={() => <Dashboard details={isAuth.details} />} />
+        {/* <Route exact path='/dashboard'>
+          <Dashboard />
+        </Route> */}
         <Route path='*'>
-          <div>Not available</div>
+          {/* <div>Not available</div> */}
+          <Notfound />
         </Route>
-      </Switch>
-    </Router>  
+      </Switch></React.Fragment>
+    }</Router>
   );
 }
 

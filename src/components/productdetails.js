@@ -2,8 +2,13 @@ import React from 'react'
 import Pic from '../assets/dessert.jpg'
 import smc2 from '../assets/smallchops1.jpg'
 import {Button} from 'react-bootstrap'
+import Notfound from './404';
 
 function Productdetails({product}) {
+    console.log(product, "product")
+    if (!product) {
+        return <Notfound />
+    }
     return (
         <div style={{display:'flex',alignItems:'center',justifyContent:'center',margin:'2rem 0rem'}}>
             <div style={{width:'80%',display:'flex',justifyContent:'space-between',flexDirection:'row',gap:'3rem'}}>

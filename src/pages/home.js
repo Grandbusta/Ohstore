@@ -7,6 +7,7 @@ import Pic from '../assets/dessert4.jpg'
 import Im from '../assets/cocktails.jpg'
 import {products} from '../assets/data'
 
+
 function Home() {
     return (
         <div>
@@ -14,15 +15,15 @@ function Home() {
                 <Carousel.Item style={{height:'500px'}}>
                     <img src={Pic} alt="" style={{width:'100%',objectFit:'cover',height:'100%'}}/>
                     <Carousel.Caption>
-                        <h2>Order for your products without stress</h2>
-                        <p>The best Ecommerce website</p>
+                        <h2>Micheal Store - An ecommerce website</h2>
+                        <p>A one stop store</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item style={{height:'500px'}}>
                     <img src={Im} alt="" style={{width:'100%',objectFit:'cover',height:'100%'}}/>
                     <Carousel.Caption>
-                        <h2>Pushing you to the top through foods</h2>
-                        <p>Order now and get it in 30 minutes</p>
+                        <h2>Pushing you to the top through products available</h2>
+                        <p>Browse Through All Products</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

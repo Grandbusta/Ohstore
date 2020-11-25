@@ -6,7 +6,7 @@ import {products} from '../assets/data'
 function Shoppage() {
     return (
         <div>
-            <Shop title='Shop' products={products}/>
+            <Shop title='Products' products={products}/>
         </div>
     )
 }

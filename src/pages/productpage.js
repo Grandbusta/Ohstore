@@ -5,7 +5,7 @@ import {products} from '../assets/data'
 import {useParams} from 'react-router-dom'
 
 function Product() {
-    const {name}=useParams()
+    const {name}=useParams();
     let product=products.filter((product)=>{
         return product.link===name
     })

@@ -17,7 +17,7 @@ function Product({product}) {
                     <div style={{display:'flex',gap:'0.5rem',alignItems:'flex-start'}}>
                     <h4>{product.originalPrice}</h4><strike>{product.discountPrice}</strike>
                     </div>
-                    <Button variant='primary' size='sm' style={{borderRadius:'1rem'}}>Add to cart</Button>
+                    <Button variant='primary' size='sm' style={{borderRadius:'1rem'}}>View</Button>
                 </div>
             </div>
         </div>
