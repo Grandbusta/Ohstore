@@ -61,6 +61,41 @@ export const auth = () => {
 }
 
 export const afetch = {
+    postf: async (url, body) => {
+        // let formData = JSON.stringify(body);
+        // let formData = new FormData();
+        // // console.log(body)
+        // for (const key in body) {
+        //     if (body.hasOwnProperty(key)) {
+        //         const element = body[key];
+        //         console.log(element)
+        //         formData.append(key, element)
+        //     }
+        // };
+        // console.log(formData)
+        try {
+            const resp = await fetch(baseLink + url , {
+                method: "POST",
+                body: body,
+                headers: {
+                    'Content-Type':'application/json',
+                    'Authorization':"Bearer " + localStorage.getItem("token")
+                }
+                //credentials: 'same-origin'
+                // redirect: "follow"
+            });
+            // console.log("hy", resp.url)
+            const resp_1 = await resp.json();
+            // console.log("hy", resp_1.url)
+            return resp_1;
+        } catch (err) {
+            // console.log(err.url);
+            return {
+                success: false,
+                message: err.message
+            };
+        }
+    },
     post: async (url, body) => {
         let formData = JSON.stringify(body);
         // let formData = new FormData();
@@ -78,7 +113,8 @@ export const afetch = {
                 method: "POST",
                 body: formData,
                 headers: {
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/json',
+                    'Authorization':"Bearer " + localStorage.getItem("token")
                 }
                 //credentials: 'same-origin'
                 // redirect: "follow"

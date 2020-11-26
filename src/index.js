@@ -6,7 +6,7 @@ import { Spinner } from "react-bootstrap";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<Spinner />}>
+    <Suspense fallback={<Spinner animation="grow" />}>
     <App />
 
     </Suspense>

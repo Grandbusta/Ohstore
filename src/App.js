@@ -8,7 +8,9 @@ import Checkout from './pages/checkout'
 import Home from './pages/home'
 import Category from './pages/category'
 import Login from './pages/Login';
-import Register from './pages/register'
+import Register from './pages/register';
+import AddProduct from './pages/AddProduct'
+
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Notfound from './components/404';
 import Dashboard from './components/DashboardNav';
@@ -50,15 +52,34 @@ function App() {
         if (!resp.success) {
           window.localStorage.removeItem('token')
           // return setErr(resp.message)
-          return ssAuth(prev => ({ ...prev,  loading: false }));
-
+          // return ssAuth(prev => ({ ...prev, loading: true }));
+          return;
         }
         else {
-          ssAuth(prev => ({ ...prev, auth: resp.data.auth, details: resp.data.details, loading: false }));
+          ssAuth(prev => ({ ...prev, auth: resp.data.auth, details: resp.data.details, loading: true }));
+
           // sDetails(true);
           // console.log(isAuth);
           return;
         }
+      });
+
+    fetch(baseLink + 'products')
+      .then((resp) => {
+        return resp.json()
+      })
+      .then((res) => {
+        if (res.success) {
+          console.log(res);
+          return ssAuth(prev => ({
+            ...prev, products: res.data.products, loading: false
+          }));
+
+        }
+        alert(res.message);
+        console.log(res);
+        ssAuth(prev => ({ ...prev, loading: false }));
+        return;
       })
   }, [])
   return (<Router>
@@ -90,6 +111,7 @@ function App() {
           <Checkout />
         </Route>
         <Authenticated exact path='/dashboard' component={() => <Dashboard details={isAuth.details} />} />
+        <Authenticated exact path='/dashboard/add' component={() => <AddProduct />} />
         {/* <Route exact path='/dashboard'>
           <Dashboard />
         </Route> */}

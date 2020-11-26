@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom'
 function DNav(props) {
     return (
         <React.Fragment>
@@ -14,6 +14,7 @@ function DNav(props) {
                     <div className="row">
                         <div className="col-md-12">
                             <h1 className="text-center">Products</h1>
+                            <button className="btn btn-primary btn-center text-center text-white">Add Product</button>
                         </div>
                     </div>
                 </div>
