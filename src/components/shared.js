@@ -78,8 +78,8 @@ export const afetch = {
                 method: "POST",
                 body: body,
                 headers: {
-                    'Content-Type':'application/json',
-                    'Authorization':"Bearer " + localStorage.getItem("token")
+                    'Authorization':"Bearer " + localStorage.getItem("token"),
+                    
                 }
                 //credentials: 'same-origin'
                 // redirect: "follow"

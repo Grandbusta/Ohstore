@@ -1,10 +1,10 @@
 import React from 'react'
 import Productdetails from '../components/productdetails'
 import Reviews from '../components/reviews'
-import {products} from '../assets/data'
+// import {products} from '../assets/data'
 import {useParams} from 'react-router-dom'
 
-function Product() {
+function Product({products}) {
     const {name}=useParams();
     let product=products.filter((product)=>{
         return product.link===name
@@ -13,7 +13,6 @@ function Product() {
     return (
         <div>
             <Productdetails product={product[0]}/>
-            <Reviews/>
         </div>
     )
 }

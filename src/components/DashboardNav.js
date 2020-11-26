@@ -1,25 +1,27 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-function DNav(props) {
+import AdminPro from './AdminProduct';
+function DNav({details, products}) {
     return (
         <React.Fragment>
             <div className="container">
                 <div className="jumbotron jumbotron-fluid text-monospace text-capitalize text-center text-sm-center text-md-center text-lg-center text-xl-center text-info">
-                    <h1>Welcome {props.details.firstName}</h1>
+                    <h1>Welcome {details.firstName}</h1>
                     <p></p>
                 </div>
             </div>
-            <div>
+            {/* <div>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
                             <h1 className="text-center">Products</h1>
-                            <button className="btn btn-primary btn-center text-center text-white">Add Product</button>
+                            <Link to="/dashboard/add" className="btn btn-primary btn-center text-center text-white">Add Product</Link>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div>
+            </div> */}
+            <AdminPro title="Products" products={products}/>
+            {/* <div>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">
@@ -51,7 +53,7 @@ function DNav(props) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </React.Fragment>
     )
 }

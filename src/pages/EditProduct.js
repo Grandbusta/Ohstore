@@ -1,55 +1,14 @@
-import React, { useRef, useState } from 'react';
-import {afetch, baseLink} from '../components/shared';
+import React, {useState} from 'react';
 
-function AddProduct() {
+function EditProduct() {
     const [error, serror] = useState(null);
     const [success, sSuccess] = useState(null);
-    const fref = useRef();
-    const [file, sfile] = useState({});
-    const handleFile = (event) => {
-        console.log(event.target.files);
-        sfile(event.target.files[0])
-    }
+
     const handleSubmit = (e) => {
-                e.preventDefault();
         serror(null);
-      sSuccess(null);
-        // console.log(e.target.files, fref.current.files);
-        const body = {
-            title: e.target.elements["title"].value,
-            content: e.target.elements["content"].value,
-            featured_imgurl: file,
-            selling_price: e.target.elements["selling_price"].value,
-            bonus_price: e.target.elements["bonus_price"].value
-        }
-        let data = new FormData();
-        data.append('propertyImages', file);
-        data.append('title', body.title);
-        data.append('content', body.content);
-        data.append('selling_price', body.selling_price);
-        data.append('bonus_price', body.bonus_price);
-        afetch.postf('products/add', data)
-        .then((res) => {
-            console.log(res);
-            if (!res.success) {
-                // console.log(fref.current.elements[0])
-                if (typeof res.message === "object") {
-                return serror("Error In Connection")
-                }
-               return serror(res.message.toString());
-            }
-            let theref = fref.current.elements
-            // Array(fref.current.elements).map(e => 
-            //     e.value = "")
-            for (let i = 0; i < theref.length; i++ ) {
-                // console.log(theref[i].value)
-                theref[i].value = ""
-            }
-
-           return sSuccess(res.data.message.toString());
-        });
+        sSuccess(null);
     }
-
+    
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -63,11 +22,11 @@ function AddProduct() {
                                 <div className="col-lg-6">
                                     <div className="p-5">
                                         <div className="text-center">
-                                            <h4 className="text-dark mb-4">Add Product</h4>
+                                            <h4 className="text-dark mb-4">Edit Product</h4>
                                             <div className="text-danger">{error}</div>
                                     <div className="text-success mb-3">{success}</div>
                                         </div>
-                                        <form className="user" ref={fref} 
+                                        <form className="user"  
                                         onSubmit={handleSubmit}
                                          encType="multipart/form-data" 
                                          >
@@ -76,9 +35,9 @@ function AddProduct() {
                                             <div className="form-group"><input className="form-control form-control-user" type="text" placeholder="Product Description" name="content" /></div>
                                             <div className="form-group"><input className="form-control form-control-user" type="number" placeholder="Selling Price" name="selling_price" /></div>
                                             <div className="form-group"><input className="form-control form-control-user" type="number" placeholder="Bonus Price" name="bonus_price" /></div>
-                                            <div className="text">Select Image</div>
-                                            <div className="form-group"><input className="form-control form-control-user" onChange={handleFile}
-                                             type="file" placeholder="Product Description" name="featured_imgurl" /></div>
+                                            {/* <div className="text">Select Image</div> */}
+                                            {/* <div className="form-group"><input className="form-control form-control-user" onChange={handleFile}
+                                             type="file" placeholder="Product Description" name="featured_imgurl" /></div> */}
 
 
                                             <div className="form-group">
@@ -103,4 +62,4 @@ function AddProduct() {
     )
 }
 
-export default AddProduct;
+export default EditProduct;
