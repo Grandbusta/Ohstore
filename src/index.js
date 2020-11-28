@@ -1,15 +1,15 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Spinner } from 'react-bootstrap';
 import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { Spinner } from "react-bootstrap";
 
 ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback={<Spinner animation="grow" />}>
-    <App />
+      <App />
 
     </Suspense>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

@@ -1,20 +1,18 @@
-import React from 'react'
-import Productdetails from '../components/productdetails'
-import Reviews from '../components/reviews'
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import Productdetails from '../components/productdetails';
+import Reviews from '../components/reviews';
 // import {products} from '../assets/data'
-import {useParams} from 'react-router-dom'
 
-function Product({products}) {
-    const {name}=useParams();
-    let product=products.filter((product)=>{
-        return product.link===name
-    })
-    console.log(product[0])
-    return (
-        <div>
-            <Productdetails product={product[0]}/>
-        </div>
-    )
+function Product({ products }) {
+  const { name } = useParams();
+  const product = products.filter((product) => product.link === name);
+  console.log(product[0]);
+  return (
+    <div>
+      <Productdetails product={product[0]} />
+    </div>
+  );
 }
 
-export default Product
+export default Product;
