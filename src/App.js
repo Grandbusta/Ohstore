@@ -157,6 +157,7 @@ function App() {
         alert('An error occured while fetching');
         return ssAuth((prev) => ({ ...prev, loading: false }));
       });
+    // eslint-disable-next-line
   }, []);
 
   // useEffect(() => {
