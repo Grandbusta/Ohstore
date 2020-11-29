@@ -8,7 +8,6 @@ function AddProduct() {
   const fref = useRef();
   const [file, sfile] = useState({});
   const handleFile = (event) => {
-    console.log(event.target.files);
     sfile(event.target.files[0]);
   };
   const handleSubmit = (e) => {
@@ -24,6 +23,7 @@ function AddProduct() {
       selling_price: e.target.elements.selling_price.value,
       bonus_price: e.target.elements.bonus_price.value,
     };
+    // eslint-disable-next-line no-undef
     const data = new FormData();
     data.append('propertyImages', file);
     data.append('title', body.title);
@@ -33,7 +33,6 @@ function AddProduct() {
     afetch.postf('products/add', data)
       .then((res) => {
         sload(false);
-        console.log(res);
         if (!res.success) {
           // console.log(fref.current.elements[0])
           if (typeof res.message === 'object') {
@@ -44,11 +43,13 @@ function AddProduct() {
         const theref = fref.current.elements;
         // Array(fref.current.elements).map(e =>
         //     e.value = "")
+        // eslint-disable-next-line no-plusplus
         for (let i = 0; i < theref.length; i++) {
           // console.log(theref[i].value)
           theref[i].value = '';
         }
 
+        // eslint-disable-next-line no-undef
         window.location.reload();
         return sSuccess(res.data.message.toString());
       });
@@ -94,19 +95,9 @@ function AddProduct() {
                             required
                           />
                         </div>
-
-                        <div className="form-group">
-                          {/* <div className="custom-control custom-checkbox small">
-                                                <div className="form-check"><input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" /><label className="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
-                                            </div> */}
-                        </div>
                         <button className="btn btn-primary btn-block text-white btn-user" type="submit">Add</button>
                         <hr />
-                        {/* <a className="btn btn-primary btn-block text-white btn-google btn-user" role="button"><i className="fab fa-google"></i>  Login with Google</a><a className="btn btn-primary btn-block text-white btn-facebook btn-user" role="button"><i className="fab fa-facebook-f"></i>  Login with Facebook</a> */}
-                        {/* <hr
-                                        /> */}
                       </form>
-                      {/* <div className="text-center"><a className="small" href="forgot-password.html">Forgot Password?</a></div> */}
                     </div>
                   </div>
                 </div>

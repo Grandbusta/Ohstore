@@ -31,6 +31,7 @@ function Register() {
         const theref = fref.current.elements;
         // Array(fref.current.elements).map(e =>
         //     e.value = "")
+        // eslint-disable-next-line no-plusplus
         for (let i = 0; i < theref.length; i++) {
           // console.log(theref[i].value)
           theref[i].value = '';
@@ -68,14 +69,10 @@ function Register() {
                     <div className="form-group"><input className="form-control form-control-user" type="number" id="exampleInputPhone" aria-describedby="phoneHelp" placeholder="Phone Number" name="phone" required /></div>
                     <div className="form-group row">
                       <div className="col-sm-6 mb-3 mb-sm-0"><input className="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password" required /></div>
-                      {/* <div className="col-sm-6"><input className="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Repeat Password" name="password_repeat" /></div> */}
                     </div>
                     <button className="btn btn-primary btn-block text-white btn-user" required type="submit">Register Account</button>
-                    {/* <hr /> */}
-                    {/* <a className="btn btn-primary btn-block text-white btn-google btn-user" role="button"><i className="fab fa-google"></i>  Register with Google</a><a className="btn btn-primary btn-block text-white btn-facebook btn-user" role="button"><i className="fab fa-facebook-f"></i>  Register with Facebook</a> */}
                     <hr />
                   </form>
-                  {/* <div className="text-center"><a className="small" href="forgot-password.html">Forgot Password?</a></div> */}
                   <div className="text-center"><Link className="small" to="/login">Already have an account? Login!</Link></div>
                 </div>
               </div>

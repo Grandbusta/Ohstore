@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { afetch } from './shared';
@@ -23,7 +25,7 @@ function AdminPro({ title, products, admin }) {
       }}
       >
         {
-                    products.map((product) => <Pro admin={admin} product={product} key={product.id} />)
+      products.map((product) => <Pro admin={admin} product={product} key={product.id} />)
                 }
       </div>
     </div>
@@ -34,15 +36,19 @@ function Pro({ product, admin }) {
   // console.log(product)
   const { link } = product;
   const handleDelete = async () => {
+    // eslint-disable-next-line no-undef
     if (window.confirm('Do you really want to delete this product? Press Ok to proceed')) {
       const del = await afetch.delete(`products/delete/${link}`);
-      console.log(del);
       if (del.success) {
+        // eslint-disable-next-line no-undef
         alert(del.data.message);
+        // eslint-disable-next-line no-undef
         return window.location.reload();
       }
+      // eslint-disable-next-line no-undef
       return alert('Error Occured While Deleting!');
     }
+    return null;
   };
   return (
     <div style={{
@@ -54,7 +60,8 @@ function Pro({ product, admin }) {
           backgroundImage: `url(${product.imageUrl})`, backgroundSize: 'cover', width: '100%', height: '250px', borderRadius: '2rem', backgroundRepeat: 'no-repeat',
         }}
         >
-          {/* <Button variant='warning' style={{borderRadius:'2rem 0rem 0rem 0rem',color:'white',opacity:'1'}} disabled>
+          {/* <Button variant='warning'
+          style={{borderRadius:'2rem 0rem 0rem 0rem',color:'white',opacity:'1'}} disabled>
                         {product.tag}
                     </Button> */}
         </div>
@@ -70,7 +77,6 @@ function Pro({ product, admin }) {
           </div>
           <Link to={`/p/${product.link}`} variant="primary" size="sm" style={{ borderRadius: '1rem' }}>View</Link>
         </div>
-        {/* <button className="btn btn-primary" type="button" style={{ paddingRight: 0 }}>VIEW</button> */}
         <Link
           to={`/dashboard/edit/${product.link}`}
           className="btn btn-warning"

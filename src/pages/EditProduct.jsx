@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { afetch } from '../components/shared';
@@ -10,7 +11,8 @@ function EditProduct({ products }) {
 
   const { prolink } = useParams();
   // console.log(prolink)
-  let product = products.filter((product) => product.link === prolink);
+  let product = products.filter((pro) => pro.link === prolink);
+  // eslint-disable-next-line prefer-destructuring
   product = product[0];
   if (!product) {
     return <Notfound />;
@@ -26,7 +28,6 @@ function EditProduct({ products }) {
       selling_price: e.target.elements.selling_price.value,
       bonus_price: e.target.elements.bonus_price.value,
     };
-    console.log(body);
     afetch.put(`products/edit/${prolink}`, body)
       .then((res) => {
         // console.log(res);
@@ -39,11 +40,12 @@ function EditProduct({ products }) {
         const theref = fref.current.elements;
         // Array(fref.current.elements).map(e =>
         //     e.value = "")
-        for (let i = 0; i < theref.length; i++) {
+        for (let i = 0; i < theref.length; i += 1) {
           // console.log(theref[i].value)
           theref[i].value = '';
         }
         sSuccess(`${res.data.message} Refreshing...`);
+        // eslint-disable-next-line no-undef
         return window.location.reload();
       });
   };
@@ -84,22 +86,9 @@ function EditProduct({ products }) {
                       <div className="form-group"><input className="form-control form-control-user" type="text" placeholder={`Current Product Description: ${product.content}`} name="content" required /></div>
                       <div className="form-group"><input className="form-control form-control-user" type="number" placeholder={`Current Original Price: ${product.originalPrice}`} name="selling_price" required /></div>
                       <div className="form-group"><input className="form-control form-control-user" type="number" placeholder={`Current Discount Price: ${product.discountPrice}`} name="bonus_price" required /></div>
-                      {/* <div className="text">Select Image</div> */}
-                      {/* <div className="form-group"><input className="form-control form-control-user" onChange={handleFile}
-                                             type="file" placeholder="Product Description" name="featured_imgurl" /></div> */}
-
-                      <div className="form-group">
-                        {/* <div className="custom-control custom-checkbox small">
-                                                <div className="form-check"><input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" /><label className="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
-                                            </div> */}
-                      </div>
                       <button className="btn btn-primary btn-block text-white btn-user" type="submit">Edit</button>
                       <hr />
-                      {/* <a className="btn btn-primary btn-block text-white btn-google btn-user" role="button"><i className="fab fa-google"></i>  Login with Google</a><a className="btn btn-primary btn-block text-white btn-facebook btn-user" role="button"><i className="fab fa-facebook-f"></i>  Login with Facebook</a> */}
-                      {/* <hr
-                                        /> */}
                     </form>
-                    {/* <div className="text-center"><a className="small" href="forgot-password.html">Forgot Password?</a></div> */}
                   </div>
                 </div>
               </div>

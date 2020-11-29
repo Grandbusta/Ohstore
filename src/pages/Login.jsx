@@ -14,40 +14,42 @@ function Login() {
       email: e.target.elements.email.value,
       password: e.target.elements.password.value,
     };
-    console.log(body);
+    // console.log(body);
     afetch.post('users/login', body)
       .then((resp1) => {
         sload(false);
         if (!resp1.success) {
-          return setErr(resp1.message);
+          setErr(resp1.message);
+          return;
         }
-        // console.log(resp)
-        window.localStorage.setItem('token', resp1.data.token);
+        //  //console.log(resp)
+        // eslint-disable-next-line no-undef
+        localStorage.setItem('token', resp1.data.token);
 
+        // eslint-disable-next-line no-undef
         fetch(`${baseLink}users/auth`, {
           headers: {
-            Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+            // eslint-disable-next-line no-undef
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         })
+          .then((resp) => resp.json())
           .then((resp) => {
-            console.log(resp);
-            return resp.json();
-          })
-          .then((resp) => {
-            console.log(resp);
+            // console.log(resp);
             if (!resp.success) {
               return setErr(resp.message);
             }
+            // eslint-disable-next-line no-undef
             window.location.reload();
             return sSuccess(resp1.data.message);
           })
-          .catch((err) => {
-            setErr(err.message);
+          .catch((errs) => {
+            setErr(errs.message);
             sload(false);
           });
       })
-      .catch((err) => {
-        setErr(err.message);
+      .catch((errs) => {
+        setErr(errs.message);
         sload(false);
       });
   };
@@ -73,18 +75,9 @@ function Login() {
                       <form className="user" onSubmit={handleSubmit}>
                         <div className="form-group"><input className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" /></div>
                         <div className="form-group"><input className="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password" /></div>
-                        <div className="form-group">
-                          {/* <div className="custom-control custom-checkbox small">
-                                                <div className="form-check"><input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" /><label className="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
-                                            </div> */}
-                        </div>
                         <button className="btn btn-primary btn-block text-white btn-user" type="submit">Login</button>
                         <hr />
-                        {/* <a className="btn btn-primary btn-block text-white btn-google btn-user" role="button"><i className="fab fa-google"></i>  Login with Google</a><a className="btn btn-primary btn-block text-white btn-facebook btn-user" role="button"><i className="fab fa-facebook-f"></i>  Login with Facebook</a> */}
-                        {/* <hr
-                                        /> */}
                       </form>
-                      {/* <div className="text-center"><a className="small" href="forgot-password.html">Forgot Password?</a></div> */}
                       <div className="text-center"><Link className="small" to="/register">Create an Account!</Link></div>
                     </div>
                   </div>

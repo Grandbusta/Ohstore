@@ -7,6 +7,7 @@ import Pic from '../assets/dessert4.jpg';
 import Im from '../assets/cocktails.jpg';
 // import {products} from '../assets/data'
 
+// eslint-disable-next-line react/prop-types
 function Home({ products }) {
   return (
     <div>

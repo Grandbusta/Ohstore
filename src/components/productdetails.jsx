@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import Pic from '../assets/dessert.jpg';
@@ -6,7 +7,6 @@ import Notfound from './404';
 import Reviews from './reviews';
 
 function Productdetails({ product }) {
-  console.log(product, 'product');
   if (!product) {
     return <Notfound />;
   }
@@ -70,7 +70,6 @@ function Productdetails({ product }) {
             </p>
             <div>
               {/* <span>QTY: </span><Button variant='outline-secondary'> 23</Button> */}
-              {/* <Button variant='primary' size='m' style={{marginLeft:'2rem'}}>Add to Cart</Button> */}
             </div>
           </div>
         </div>

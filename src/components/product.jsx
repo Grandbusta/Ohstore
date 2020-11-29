@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +13,8 @@ function Product({ product }) {
           backgroundImage: `url(${product.imageUrl})`, backgroundSize: 'cover', width: '100%', height: '250px', borderRadius: '2rem', backgroundRepeat: 'no-repeat',
         }}
         >
-          {/* <Button variant='warning' style={{borderRadius:'2rem 0rem 0rem 0rem',color:'white',opacity:'1'}} disabled>
+          {/* <Button variant='warning' style={{
+          borderRadius:'2rem 0rem 0rem 0rem',color:'white',opacity:'1'}} disabled>
                         {product.tag}
                     </Button> */}
         </div>
