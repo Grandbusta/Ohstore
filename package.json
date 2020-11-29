@@ -17,6 +17,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
     "redux": "^4.0.5",
+    "express": "^4.17.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
