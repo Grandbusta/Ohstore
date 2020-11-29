@@ -2,7 +2,7 @@
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
 
-export const baseLink = 'http://localhost:5105/';
+export const baseLink = 'http://store-fe.herokuapp.com/';
 
 export const afetch = {
   Loader: () => <Spinner className="spinner" animation="grow" />,
