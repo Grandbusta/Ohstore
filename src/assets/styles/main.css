@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.navDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+.menuBar {
+  display: none;
+}
+.navLink {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.navAlign {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.search {
+  display: flex;
+}
+.Avi {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.7rem;
+}
+.productDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  margin: 1rem;
+  box-shadow: 0rem 0.1rem 0.9rem rgb(224, 224, 224);
+  border-radius: 2rem;
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
+}
+
+.featuredDiv {
+  background-size: contain;
+  width: 100%;
+  height: 250px;
+  border-radius: 2rem;
+}
+.shopDiv {
+  width: 100%;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+}
+.line {
+  background-color: #49a6e9;
+  width: 6rem;
+  height: 0.25rem;
+  margin: auto;
+}
+.titleDiv {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.titleDiv h1 {
+  font-weight: bold;
+}
+.productList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: auto;
+}
+.tableDiv {
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+}
+.tableSect table {
+  width: 100%;
+}
+.cartImg {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 1rem;
+}
+.checkout {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.formArea {
+  width: 100%;
+}
+.formDiv {
+  margin: 1rem 1rem 0rem 2rem;
+}
+.cartSum {
+  width: 30%;
+  margin-right: 2rem;
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  border-radius: 1rem;
+  flex-direction: column;
+  box-shadow: 0rem 0.3rem 0.9rem rgb(224, 224, 224);
+}

@@ -1,0 +1,44 @@
+@media screen and (max-width: 769px) {
+  .productList {
+    flex-direction: column;
+  }
+  .productDiv {
+    width: 100%;
+    margin: 1rem 0rem;
+  }
+  .navDiv {
+    padding: 1rem 0.5rem;
+  }
+  .menuBar {
+    display: inline-block;
+    font-size: 26px;
+  }
+  .productList {
+    width: 95%;
+  }
+  .navLink {
+    display: none;
+  }
+  .search {
+    display: none;
+  }
+  .Avi {
+    display: none;
+  }
+  .tableDiv {
+    width: 95%;
+  }
+  .tableSect {
+    overflow-x: scroll;
+  }
+  .checkout {
+    flex-direction: column;
+  }
+  .cartSum {
+    margin: auto;
+    width: 95%;
+  }
+  .formDiv {
+    margin: 0.5rem;
+  }
+}

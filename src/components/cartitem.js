@@ -5,7 +5,7 @@ import {Button,Form} from 'react-bootstrap'
 function Cartitem() {
     return (
             <tr>
-                <td><img src={Img} alt="" style={{width:'100px',height:'100px',borderRadius:'1rem'}}/></td>
+                <td><img src={Img} alt="" className='cartImg'/></td>
                 <td>
                     <h6>
                         Swiss Made Vegetable Cutting Knife
