@@ -7,6 +7,7 @@ import Cart from './pages/cart'
 import Checkout from './pages/checkout'
 import Home from './pages/home'
 import Category from './pages/category'
+import Admin from './pages/admin'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route path='/checkout'>
           <Checkout/>
+        </Route>
+        <Route path='/admin'>
+          <Admin/>
         </Route>
         <Route path='*'>
           <div>Not available</div>

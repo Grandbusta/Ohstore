@@ -34,11 +34,46 @@
   .checkout {
     flex-direction: column;
   }
+  .cartImg {
+    width: 70px;
+    height: 70px;
+  }
   .cartSum {
     margin: auto;
     width: 95%;
   }
   .formDiv {
     margin: 0.5rem;
+  }
+  .prodetDiv {
+    flex-direction: column;
+    width: 90%;
+  }
+  .proContentDiv {
+    width: 100%;
+  }
+  .prodetImgDiv {
+    width: 100%;
+  }
+  .reviewDiv {
+    width: 100%;
+    margin: 1rem 0rem;
+  }
+  .allrev {
+    width: 90%;
+  }
+  .revSect {
+    margin: 0rem;
+  }
+  .prodetDiv {
+    width: 100%;
+    padding-left: 0;
+  }
+  .adminDiv {
+    margin: 0.5rem;
+    flex-direction: column;
+  }
+  .procontentDiv {
+    width: 100%;
   }
 }
