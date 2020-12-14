@@ -1,7 +1,7 @@
 import { PRODUCT_REQUEST, PRODUCT_SUCCESS, PRODUCT_FAILURE } from "./productTypes"
 
 const initState={
-    loading:false,
+    loading:true,
     products:[],
     error:''
 }

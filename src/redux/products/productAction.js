@@ -21,12 +21,25 @@ export const productFailure=(error)=>{
 
 export const fetchProduct=()=>{
     return (dispatch)=>{
-        dispatch(productRequest)
+        dispatch(productRequest())
         axios.get('http://localhost:9000/products').then((res=>{
             const products=res.data.data
-            console.log(products)
             dispatch(productSucess(products))
         })).catch((err)=>{
+            dispatch(productFailure(err.message))
+        })
+    }
+}
+
+export const fetchOneProduct=(slug)=>{
+    return (dispatch)=>{
+        dispatch(productRequest())
+        axios.get(`http://localhost:9000/products/${slug}`).then((res)=>{
+            const oneProduct=res.data.data
+            console.log('prowe',oneProduct)
+            dispatch(productSucess(oneProduct))
+        }).catch((err)=>{
+            console.log(err.message)
             dispatch(productFailure(err.message))
         })
     }

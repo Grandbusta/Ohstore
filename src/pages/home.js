@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {fetchProduct} from '../redux/products/productAction'
+import {fetchProduct} from '../redux'
 import {Carousel,Button} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import {FiArrowRight} from 'react-icons/fi'
@@ -8,7 +8,6 @@ import Shop from '../components/shop'
 import Pic from '../assets/dessert4.jpg'
 import Im from '../assets/cocktails.jpg'
 import Loading from '../components/loading'
-import {products} from '../assets/data'
 
 function Home() {
     const product=useSelector(state=>state.product)
@@ -16,8 +15,8 @@ function Home() {
     useEffect(()=>{
         dispatch(fetchProduct())
     },[])
-    console.log('available products',product)
     return (
+        product.loading?<Loading/>:product.error?<div><h1>error occured</h1></div>:
         <div>
             <Carousel>
                 <Carousel.Item style={{height:'500px'}}>
@@ -35,7 +34,7 @@ function Home() {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-            {product.loading?<Loading/>:product.error?<div><h1>error occured</h1></div>:<Shop title='Latest Products' products={product.products}/>}
+            <Shop title='Latest Products' products={product.products}/>
             <div style={{display:'flex',alignItems:'center',justifyContent:'center', marginBottom:'3rem'}}>
                 <Link to='/shop'>
             <Button variant='primary'>

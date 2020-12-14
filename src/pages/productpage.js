@@ -1,43 +1,49 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import {useSelector,useDispatch} from 'react-redux'
 import Review from '../components/review'
-import {products} from '../assets/data'
 import {useParams} from 'react-router-dom'
-import Pic from '../assets/dessert.jpg'
-import smc2 from '../assets/smallchops1.jpg'
 import {Button} from 'react-bootstrap'
+import { fetchOneProduct} from '../redux'
+import Loading from '../components/loading'
 
 function Product() {
     const {name}=useParams()
-    let product=products.filter((product)=>{
-        return product.link===name
-    })
-    console.log(product[0])
+    const data=useSelector(state=>state.product)
+    const products=data.products
+    const dispatch=useDispatch()
+    useEffect(()=>{
+        console.log('Called now')
+        dispatch(fetchOneProduct(name))
+    },[])
+    console.log('productspage',products)
     return (
+        data.loading?<Loading/>:data.error?<div><h1>error occured</h1></div>:
         <div>
             <div className='detailsDiv'>
             <div className='prodetDiv'>
                 <div className='prodetImgDiv'>
-                    <div style={{backgroundImage:`url(${product[0].imageUrl})`}} className='productImg'>
+                    <div style={{backgroundImage:`url(${products.featured_imgurl})`}} className='productImg'>
                     </div>
                     <div className='proImgs'>
-                        <div style={{backgroundImage:`url(${product[0].imageUrl})`}} className='proImg'></div>
-                        <div style={{backgroundImage:`url(${smc2})`}} className='proImg'></div>
-                        <div style={{backgroundImage:`url(${Pic})`}} className='proImg'></div>
+                        {
+                            products.product_images.map((image)=>{
+                                return <div style={{backgroundImage:`url(${image.imageurl})`}} className='proImg' key={image.id}></div>
+                            })
+                        }
                     </div>
                 </div>
                 <div className='proContentDiv'>
-                    <h1>{product[0].name}</h1>
+                    <h1>{products.title}</h1>
                     <p>BY <strong>KC Company</strong></p>
                     <div style={{display:'flex',alignItems:'center'}}>
-                        <Button variant='outline-primary' size='lg' disabled>$45</Button>
+                    <Button variant='outline-primary' size='lg' disabled>{`$${products.bonus_price}`}</Button>
                         <div style={{marginLeft:'1rem'}}>
                         <strong style={{color:'green'}}>Save 12%</strong>
                         <p>Inclusive of all taxes</p>                         
                         </div>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia optio ullam consectetur eaque, modi cum libero deleniti praesentium illum odit et est architecto quibusdam, voluptatem perferendis. Dolores eveniet officia pariatur.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia optio ullam consectetur eaque, modi cum libero deleniti praesentium illum odit et est architecto quibusdam, voluptatem perferendis. Dolores eveniet officia pariatur.
+                       {products.content}
                     </p>
                     <div>
                         <span>QTY: </span><Button variant='outline-secondary'> 23</Button>

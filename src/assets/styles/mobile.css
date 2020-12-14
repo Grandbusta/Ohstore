@@ -52,6 +52,9 @@
   .proContentDiv {
     width: 100%;
   }
+  .detailsDiv {
+    margin: 0rem 1rem;
+  }
   .prodetImgDiv {
     width: 100%;
   }
@@ -75,5 +78,8 @@
   }
   .procontentDiv {
     width: 100%;
+  }
+  .proContentDiv h1 {
+    font-size: 2rem;
   }
 }
