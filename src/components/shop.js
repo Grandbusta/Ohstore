@@ -17,9 +17,6 @@ function Shop({title,products}) {
                         <div className='productDiv' key={product.id}>
                             <div>
                                 <div style={{backgroundImage:`url(${product.featured_imgurl})`}} className='featuredDiv'>
-                                    {/* <Button variant='warning' style={{borderRadius:'2rem 0rem 0rem 0rem',color:'white',opacity:'1'}} disabled>
-                                        {product.tag}
-                                    </Button> */}
                                 </div>
                                 <h5 style={{marginTop:'1rem'}}> <Link to={`/p/${product.slug}`}>{product.title.slice(0,110)}</Link></h5>
                                     <p>{product.category}</p>

@@ -77,7 +77,7 @@
 }
 .productList {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
   width: 95%;
@@ -124,6 +124,7 @@ th {
 }
 .detailsDiv {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   margin: 2rem 0rem;
@@ -144,7 +145,9 @@ th {
 .productImg {
   width: 100%;
   height: 400px;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 3rem;
 }
 .proImgs {
@@ -158,10 +161,15 @@ th {
   border-radius: 2rem;
   width: 30%;
   height: 100%;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .proContentDiv {
   width: 60%;
+}
+.proContentDiv h1 {
+  font-size: 2rem;
 }
 .reviewDiv {
   display: flex;
@@ -219,11 +227,4 @@ th {
 }
 .procontentDiv {
   width: 67%;
-}
-.prodetDiv {
-  width: 33%;
-  align-self: flex-start;
-  padding-left: 2rem;
-  display: flex;
-  flex-direction: column;
 }

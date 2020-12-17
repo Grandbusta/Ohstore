@@ -23,8 +23,8 @@ function App() {
         </Route>
         <Route path='/p/:name' children={<ProductPage/>}>
         </Route>
-        <Route path='/c/:category' children={<Category/>}>
-        </Route>
+        {/* <Route path='/c/:category' children={<Category/>}>
+        </Route> */}
         <Route path='/cart'>
           <Cart/>
         </Route>

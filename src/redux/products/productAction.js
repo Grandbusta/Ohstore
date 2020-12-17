@@ -30,17 +30,3 @@ export const fetchProduct=()=>{
         })
     }
 }
-
-export const fetchOneProduct=(slug)=>{
-    return (dispatch)=>{
-        dispatch(productRequest())
-        axios.get(`http://localhost:9000/products/${slug}`).then((res)=>{
-            const oneProduct=res.data.data
-            console.log('prowe',oneProduct)
-            dispatch(productSucess(oneProduct))
-        }).catch((err)=>{
-            console.log(err.message)
-            dispatch(productFailure(err.message))
-        })
-    }
-}

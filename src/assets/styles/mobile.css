@@ -52,9 +52,6 @@
   .proContentDiv {
     width: 100%;
   }
-  .detailsDiv {
-    margin: 0rem 1rem;
-  }
   .prodetImgDiv {
     width: 100%;
   }
@@ -70,15 +67,17 @@
   }
   .prodetDiv {
     width: 100%;
-    padding-left: 0;
+    padding: 0rem 1rem;
+    flex-direction: column;
+    display: flex;
   }
   .adminDiv {
     margin: 0.5rem;
     flex-direction: column;
   }
-  .procontentDiv {
+  /* .procontentDiv {
     width: 100%;
-  }
+  } */
   .proContentDiv h1 {
     font-size: 2rem;
   }

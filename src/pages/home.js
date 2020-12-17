@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {fetchProduct} from '../redux'
+import {fetchProduct} from '../redux/products/productAction'
 import {Carousel,Button} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import {FiArrowRight} from 'react-icons/fi'
@@ -15,6 +15,7 @@ function Home() {
     useEffect(()=>{
         dispatch(fetchProduct())
     },[])
+    console.log(product)
     return (
         product.loading?<Loading/>:product.error?<div><h1>error occured</h1></div>:
         <div>
@@ -34,7 +35,7 @@ function Home() {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-            <Shop title='Latest Products' products={product.products}/>
+            <Shop title='Latest Products' products={product.products.slice(0,6)}/>
             <div style={{display:'flex',alignItems:'center',justifyContent:'center', marginBottom:'3rem'}}>
                 <Link to='/shop'>
             <Button variant='primary'>

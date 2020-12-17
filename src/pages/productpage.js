@@ -3,19 +3,21 @@ import {useSelector,useDispatch} from 'react-redux'
 import Review from '../components/review'
 import {useParams} from 'react-router-dom'
 import {Button} from 'react-bootstrap'
-import { fetchOneProduct} from '../redux'
+import {fetchOneProduct} from '../redux/products/oneProductAction'
+import {addToCart} from '../redux/cart/cartAction'
 import Loading from '../components/loading'
 
 function Product() {
     const {name}=useParams()
-    const data=useSelector(state=>state.product)
-    const products=data.products
+    const data=useSelector(state=>state.singleProduct)
+    const cart=useSelector(state=>state.cart)
+    console.log(cart)
+    const products=data.oneproduct
     const dispatch=useDispatch()
     useEffect(()=>{
-        console.log('Called now')
         dispatch(fetchOneProduct(name))
     },[])
-    console.log('productspage',products)
+    console.log('productspage',data,products)
     return (
         data.loading?<Loading/>:data.error?<div><h1>error occured</h1></div>:
         <div>
@@ -47,7 +49,7 @@ function Product() {
                     </p>
                     <div>
                         <span>QTY: </span><Button variant='outline-secondary'> 23</Button>
-                        <Button variant='primary' size='m' style={{marginLeft:'2rem'}}>Add to Cart</Button>
+                        <Button variant='primary' size='m' style={{marginLeft:'2rem'}} onClick={()=>{addToCart(products)}}>Add to Cart</Button>
                     </div>
                 </div>
             </div>
