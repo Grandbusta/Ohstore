@@ -1,23 +1,20 @@
 import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import Review from '../components/review'
-import {useParams} from 'react-router-dom'
+import {useParams,Link} from 'react-router-dom'
 import {Button} from 'react-bootstrap'
-import {fetchOneProduct} from '../redux/products/oneProductAction'
-import {addToCart} from '../redux/cart/cartAction'
+import {fetchOneProduct} from '../redux'
+import {addToCart} from '../redux'
 import Loading from '../components/loading'
 
 function Product() {
     const {name}=useParams()
     const data=useSelector(state=>state.singleProduct)
-    const cart=useSelector(state=>state.cart)
-    console.log(cart)
     const products=data.oneproduct
     const dispatch=useDispatch()
     useEffect(()=>{
         dispatch(fetchOneProduct(name))
     },[])
-    console.log('productspage',data,products)
     return (
         data.loading?<Loading/>:data.error?<div><h1>error occured</h1></div>:
         <div>
@@ -38,7 +35,7 @@ function Product() {
                     <h1>{products.title}</h1>
                     <p>BY <strong>KC Company</strong></p>
                     <div style={{display:'flex',alignItems:'center'}}>
-                    <Button variant='outline-primary' size='lg' disabled>{`$${products.bonus_price}`}</Button>
+                    <Button variant='outline-primary' size='lg' style={{opacity:'1'}} disabled>{`$${products.bonus_price}`}</Button>
                         <div style={{marginLeft:'1rem'}}>
                         <strong style={{color:'green'}}>Save 12%</strong>
                         <p>Inclusive of all taxes</p>                         
@@ -48,8 +45,14 @@ function Product() {
                        {products.content}
                     </p>
                     <div>
-                        <span>QTY: </span><Button variant='outline-secondary'> 23</Button>
-                        <Button variant='primary' size='m' style={{marginLeft:'2rem'}} onClick={()=>{addToCart(products)}}>Add to Cart</Button>
+                        <Link to='/cart'>
+                            <Button 
+                            variant='primary' 
+                            size='m' 
+                            onClick={()=>{dispatch(addToCart(products))}}>
+                                Add to Cart
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>

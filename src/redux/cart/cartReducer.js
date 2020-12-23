@@ -1,36 +1,120 @@
-import {ADD_TO_CART,REMOVE_FROM_CART,INCREASE_CART_ITEM,DECREASE_CART_ITEM,EMPTY_CART} from './cartTypes'
+import {ADD_TO_CART,REMOVE_FROM_CART,INCREASE_CART_ITEM,DECREASE_CART_ITEM} from './cartTypes'
 
-const initState={
-    cart:[],
-    total:''
+const getLocalStorage = () => {
+  let cart = localStorage.getItem('cart')
+  if (cart) {
+    return JSON.parse(localStorage.getItem('cart'))
+  } else {
+    return {
+        cart:[],
+        totalQty:0,
+        totalAmount:(0).toFixed(2)
+    }
+  }
 }
 
+const initState=getLocalStorage()
+
+
 const reducer=(state=initState,action)=>{
-    switch(action.type){
-        case ADD_TO_CART:
-            console.log(action.payload)
-            return{
-                ...state,
-                cart:[action.payload],
-                // total:()=>{
-                //     const adds=0
-                //     state.cart.map((item)=>{adds+=item.bonus_price})
-                //     console.log(adds)
-                //     return `${adds}`
-                // }
+    if(action.type===ADD_TO_CART){
+      const {id,title,slug,featured_imgurl,bonus_price}= action.payload
+      const exist=state.cart.find((item)=>{return item.id===id})
+      if(exist){
+          const tempCart=state.cart.map((item)=>{
+              if(item.id===id){
+                  let newQty=item.quantity+1
+                return {...item,quantity:newQty}
+              }else{
+                return item
             }
-        case REMOVE_FROM_CART:
-            return{
-                ...state,
-                cart:state.cart.filter((item)=>{
-                    return action.payload.id !==item.id
-                })
+          })
+          let totalAmount=0
+          let totalQty=0
+          tempCart.forEach((cartItem)=>{
+            const eachTotal=cartItem.price*cartItem.quantity
+            totalAmount+=eachTotal
+            totalQty+=cartItem.quantity
+
+          })
+          return {...state,cart:tempCart,totalAmount:totalAmount.toFixed(2),totalQty}
+      }else{
+          const newCart=[...state.cart,{id,title,slug,featured_imgurl,price:bonus_price,quantity:1}]
+            let totalAmount=0
+            let totalQty=0
+            newCart.forEach((cartItem)=>{
+                const eachTotal=cartItem.price*cartItem.quantity
+                totalAmount+=eachTotal
+                totalQty+=cartItem.quantity
+            })
+          return {
+              ...state,
+              cart:newCart,
+              totalQty,
+              totalAmount:totalAmount.toFixed(2)
             }
-        case INCREASE_CART_ITEM:
-            return{
-                ...state,
+      }
+    }
+    if(action.type===REMOVE_FROM_CART){
+        const tempCart=state.cart.filter((item)=>{
+            return item.id !==action.payload
+        })
+          let totalAmount=0
+          let totalQty=0
+          tempCart.forEach((cartItem)=>{
+            const eachTotal=cartItem.price*cartItem.quantity
+            totalAmount+=eachTotal
+            totalQty+=cartItem.quantity
+
+          })
+        return {cart:tempCart,totalAmount:totalAmount.toFixed(2),totalQty}
+    }
+    if(action.type===INCREASE_CART_ITEM){
+      const exist=state.cart.find((item)=>{return item.id===action.payload})
+      if(exist){
+          const tempCart=state.cart.map((item)=>{
+              if(item.id===action.payload){
+                  let newQty=item.quantity+1
+                return {...item,quantity:newQty}
+              }else{
+                return item
             }
-        default:return state
-    } 
+          })
+          let totalAmount=0
+          let totalQty=0
+          tempCart.forEach((cartItem)=>{
+            const eachTotal=cartItem.price*cartItem.quantity
+            totalAmount+=eachTotal
+            totalQty+=cartItem.quantity
+
+          })
+          return {...state,cart:tempCart,totalAmount:totalAmount.toFixed(2),totalQty}
+      }
+    }
+    if(action.type===DECREASE_CART_ITEM){
+      const exist=state.cart.find((item)=>{return item.id===action.payload})
+      if(exist.quantity>1){
+        if(exist){
+            const tempCart=state.cart.map((item)=>{
+                if(item.id===action.payload){
+                    let newQty=item.quantity-1
+                  return {...item,quantity:newQty}
+                }else{
+                  return item
+              }
+            })
+            let totalAmount=0
+            let totalQty=0
+            tempCart.forEach((cartItem)=>{
+              const eachTotal=cartItem.price*cartItem.quantity
+              totalAmount+=eachTotal
+              totalQty+=cartItem.quantity
+  
+            })
+            return {...state,cart:tempCart,totalAmount:totalAmount.toFixed(2),totalQty}
+        }
+      }
+    }
+    return state
 }
 export default reducer

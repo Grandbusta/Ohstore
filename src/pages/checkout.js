@@ -1,9 +1,12 @@
 import React from 'react'
+import {useSelector,useDispatch} from 'react-redux'
 import {Form,Col, Button} from 'react-bootstrap'
 import {FaShoppingCart} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 
 function Checkout() {
+    const {cart,totalAmount}=useSelector(state=>state.cart)
+    const dispatch=useDispatch()
     return (
         <div className='checkout'>
             <div className='formDiv'>
@@ -72,37 +75,25 @@ function Checkout() {
                     <h5>Cart Summary(<Link to='/cart' style={{fontSize:'14px'}}>edit</Link>)</h5>
                 </div>
             <div style={{width:'100%'}}>
-                <section>
-                    <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start'}}>
-                        <div style={{width:'200px'}}>
-                        <p>2 x Best fish in the river</p>
-                        </div>
-                        <strong>$56</strong>
-                    </div>
-                    <hr/>
-                </section>
-                <section>
-                    <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start'}}>
-                        <div style={{width:'200px'}}>
-                        <p>2 x Best fish in the river</p>
-                        </div>
-                        <strong>$56</strong>
-                    </div>
-                    <hr/>
-                </section>
-                <section>
-                    <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start'}}>
-                        <div style={{width:'200px'}}>
-                        <p>2 x Best fish in the river</p>
-                        </div>
-                        <strong>$56</strong>
-                    </div>
-                    <hr/>
-                </section>
+                {
+                    cart.map((item)=>{
+                        return(
+                            <section>
+                                <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start'}}>
+                                    <div style={{width:'200px'}}>
+                                        <p>{`${item.quantity} x ${(item.title.slice(0,20))}...`}</p>
+                                    </div>
+                                    <strong>{`$${(item.price*item.quantity).toFixed(2)}`}</strong>
+                                </div>
+                                <hr/>
+                            </section>
+                        )
+                    })
+                }
             </div>
         <div style={{display:'flex',justifyContent:'space-between'}}>
             <p>Total:</p>
-            <strong>$360</strong>
+            <strong>{`$${totalAmount}`}</strong>
         </div>
             <Button type='submit' style={{width:'100%'}}>Place Order</Button>
         </div>

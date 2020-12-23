@@ -40,8 +40,8 @@
   justify-content: center;
   width: 30%;
   margin: 1rem;
-  box-shadow: 0rem 0.1rem 0.9rem rgb(224, 224, 224);
-  border-radius: 2rem;
+  /* box-shadow: 0rem 0.1rem 0.9rem rgb(224, 224, 224);
+  border-radius: 2rem; */
   padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
 

@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useEffect} from 'react';
+import {useSelector} from 'react-redux'
 import './index.css'
 import ProductPage from './pages/productpage'
 import Shoppage from './pages/shoppage'
@@ -6,11 +7,14 @@ import Navs from './components/navbar'
 import Cart from './pages/cart'
 import Checkout from './pages/checkout'
 import Home from './pages/home'
-import Category from './pages/category'
 import Admin from './pages/admin'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 
 function App() {
+    const cart=useSelector(state=>state.cart)
+      useEffect(()=>{
+          localStorage.setItem('cart',JSON.stringify(cart))
+      },[cart])
   return (
     <Router>
       <Navs/>
@@ -23,8 +27,6 @@ function App() {
         </Route>
         <Route path='/p/:name' children={<ProductPage/>}>
         </Route>
-        {/* <Route path='/c/:category' children={<Category/>}>
-        </Route> */}
         <Route path='/cart'>
           <Cart/>
         </Route>

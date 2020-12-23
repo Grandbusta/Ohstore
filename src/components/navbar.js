@@ -1,4 +1,5 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Form,Button} from 'react-bootstrap'
 import {FaShoppingCart,FaBars} from 'react-icons/fa'
@@ -6,11 +7,12 @@ import {FiSearch} from 'react-icons/fi'
 import Avi from '../assets/avi.png'
 
 function Navs() {
+    const {totalQty}=useSelector(state=>state.cart)
     return (
-        <div>
+        <div >
             <div className='navDiv'>
                 <div className='navAlign'><h5>OhStore</h5></div>
-                    <ul className='navLink'>
+                    <ul className='navLink' style={{alignSelf:'center'}}>
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to="/shop">Shop</Link></li>
                     </ul>
@@ -25,7 +27,7 @@ function Navs() {
                     <Link to='/cart'>
                     <Button style={{}} variant='outline-primary'>
                             <FaShoppingCart/>
-                            <strong style={{marginLeft:'1rem'}}>5</strong>
+    <strong style={{marginLeft:'1rem'}}>{totalQty}</strong>
                     </Button>
                     </Link>
                     <img src={Avi} alt="new" className='Avi'></img>
