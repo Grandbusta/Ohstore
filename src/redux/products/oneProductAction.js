@@ -27,10 +27,8 @@ export const fetchOneProduct=(slug)=>{
         dispatch(oneProductRequest())
         axios.get(`http://localhost:9000/products/${slug}`).then((res)=>{
             const oneProduct=res.data.data
-            console.log('prowe',oneProduct)
             dispatch(oneProductSucess(oneProduct))
         }).catch((err)=>{
-            console.log(err.message)
             dispatch(oneProductFailure(err.message))
         })
     }

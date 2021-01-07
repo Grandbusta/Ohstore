@@ -7,7 +7,6 @@ import {increaseCartItem,decreaseCartItem,removeFromCart} from '../redux'
 function Cart() {
     const {cart,totalAmount}=useSelector(state=>state.cart)
     const dispatch=useDispatch()
-    // console.log(cart)
     return (
         !cart.length?
         <div style={{width:'100%',justifyContent:'center',alignItems:'center',color:'blue',height:'100%'}}>

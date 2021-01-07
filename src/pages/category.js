@@ -5,7 +5,6 @@ import {products} from '../assets/data'
 
 function Category() {
     const {category}=useParams()
-    console.log(category)
     return (
         <div>
             <Shop title={category} products={products}/>

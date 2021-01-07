@@ -11,7 +11,6 @@ function Shoppage() {
     useEffect(()=>{
         dispatch(fetchProduct())
     },[])
-    console.log(products)
     return (
         products.loading?<Loading/>:products.error?<div><h1>error occured</h1></div>:
         <div>

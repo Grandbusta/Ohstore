@@ -2,7 +2,7 @@ import React from 'react'
 import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Form,Button} from 'react-bootstrap'
-import {FaShoppingCart,FaBars} from 'react-icons/fa'
+import {FaShoppingCart} from 'react-icons/fa'
 import {FiSearch} from 'react-icons/fi'
 import Avi from '../assets/avi.png'
 
@@ -16,7 +16,6 @@ function Navs() {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to="/shop">Shop</Link></li>
                     </ul>
-                    <FaBars className='menuBar'/>
                 <div style={{display:'flex',gap:'1rem',alignItems:'center'}}>
                     <div className='search'>
                         <Form.Control type='text' placeholder='search...' style={{borderRadius:'0.5rem 0rem 0rem 0.5rem'}}></Form.Control>

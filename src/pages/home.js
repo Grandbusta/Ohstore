@@ -15,7 +15,6 @@ function Home() {
     useEffect(()=>{
         dispatch(fetchProduct())
     },[])
-    console.log(product)
     return (
         product.loading?<Loading/>:product.error?<div><h1>error occured</h1></div>:
         <div>
