@@ -74,8 +74,8 @@ export const fetchSignUp=(data)=>{
             email:data.email,
             password:data.password
         }).then((res)=>{
-            dispatch(signupSuccess())
             window.location.reload()
+            dispatch(signupSuccess())
         }).catch((err)=>{
             dispatch(signupFailure(err.response.data.message))
         })
