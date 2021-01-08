@@ -16,6 +16,11 @@ export const updateLogin=(name,value)=>{
         payload:{name,value}
     }
 }
+export const emptyLogin=()=>{
+    return{
+        type:"EMPTY_LOGIN_DETAILS"
+    }
+}
 
 export const loginRequest=()=>{
     return{
@@ -74,7 +79,7 @@ export const fetchSignUp=(data)=>{
             email:data.email,
             password:data.password
         }).then((res)=>{
-            window.location.reload()
+            dispatch(emptyLogin())
             dispatch(signupSuccess())
         }).catch((err)=>{
             dispatch(signupFailure(err.response.data.message))

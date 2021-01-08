@@ -80,6 +80,14 @@ export const LoginReducer=(state=LoginInitstate,action)=>{
             error:action.payload
         }
     }
+    if(action.type==="EMPTY_LOGIN_DETAILS"){
+        return{
+            ...state,
+            loading:true,
+            token:'',
+            error:''
+        }
+    }
     return state
 }
 
