@@ -1,4 +1,4 @@
-## E-commerce Web Application(Ohstore) Frontend
+# E-commerce Web Application(Ohstore) Frontend
 
 > This is an Ecommerce web application frontend built with ReactJs
 
@@ -7,7 +7,7 @@ The backend of this project is in [Here](https://github.com/Grandbusta/ohstore-b
 This Application is improved and features are added with time.
 I hope to add more features in future.
 
-### Technologies used
+## Technologies used
 
 - Javascript
 - React
@@ -15,7 +15,7 @@ I hope to add more features in future.
 - React Hooks
 - Bootstrap
 
-### Features
+## Features
 
 - [x] Products Page
 - [x] Cart
@@ -26,6 +26,6 @@ I hope to add more features in future.
 - [ ] Order Tracking
 - [ ] Order Cancelation
 
-### Don't forget to drop a star and follow me:+1:
+## Don't forget to drop a star and follow me:+1:
 
 Thanks.
