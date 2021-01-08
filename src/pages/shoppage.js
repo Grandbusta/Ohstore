@@ -3,6 +3,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import {fetchProduct} from '../redux/products/productAction'
 import Loading from '../components/loading'
 import Shop from '../components/shop'
+import Err from '../components/error'
 
 
 function Shoppage() {
@@ -12,7 +13,7 @@ function Shoppage() {
         dispatch(fetchProduct())
     },[])
     return (
-        products.loading?<Loading/>:products.error?<div><h1>error occured</h1></div>:
+        products.loading?<Loading/>:products.error?<Err/>:
         <div>
             <Shop title='Shop' products={products.products}/>
         </div>

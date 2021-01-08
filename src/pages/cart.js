@@ -3,18 +3,14 @@ import {useSelector,useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Button} from 'react-bootstrap'
 import {increaseCartItem,decreaseCartItem,removeFromCart} from '../redux'
+import EmptyDiv from '../components/empty'
 
 function Cart() {
     const {cart,totalAmount}=useSelector(state=>state.cart)
     const dispatch=useDispatch()
     return (
         !cart.length?
-        <div style={{width:'100%',justifyContent:'center',alignItems:'center',color:'blue',height:'100%'}}>
-            <h1 style={{textAlign:'center'}}>No product Added to cart</h1>
-            <div style={{display:'flex',alignItems:'center',width:'100%',justifyContent:'center'}}>
-            <Link to='/shop'><Button>Continue shopping</Button></Link>
-            </div>
-        </div>:
+        <EmptyDiv/>:
         <div>
             <div className='tableDiv'>
             <div className='titleDiv'>

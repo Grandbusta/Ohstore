@@ -16,6 +16,9 @@
   .productList {
     width: 95%;
   }
+  .empty {
+    width: 100%;
+  }
   .search {
     display: none;
   }

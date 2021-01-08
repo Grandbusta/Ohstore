@@ -33,7 +33,7 @@ export const placeOrder=(products,details,token)=>{
     return(dispatch)=>{
         dispatch(orderPlace())
         const {email,firstname,lastname,phone1,address1,city,state}=details
-        axios.post('http://localhost:9000/orders',{
+        axios.post('https://ohstore.herokuapp.com/orders',{
             products:products,
             email:email,
             firstname:firstname,

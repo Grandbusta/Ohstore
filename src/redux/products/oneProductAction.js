@@ -25,7 +25,7 @@ export const oneProductFailure=(error)=>{
 export const fetchOneProduct=(slug)=>{
     return (dispatch)=>{
         dispatch(oneProductRequest())
-        axios.get(`http://localhost:9000/products/${slug}`).then((res)=>{
+        axios.get(`https://ohstore.herokuapp.com/products/${slug}`).then((res)=>{
             const oneProduct=res.data.data
             dispatch(oneProductSucess(oneProduct))
         }).catch((err)=>{

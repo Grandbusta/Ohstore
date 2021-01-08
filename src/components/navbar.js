@@ -5,13 +5,14 @@ import {Form,Button} from 'react-bootstrap'
 import {FaShoppingCart} from 'react-icons/fa'
 import {FiSearch} from 'react-icons/fi'
 import Avi from '../assets/avi.png'
+import Ico from '../assets/icon.png'
 
 function Navs() {
     const {totalQty}=useSelector(state=>state.cart)
     return (
         <div >
             <div className='navDiv'>
-                <div className='navAlign'><h5>OhStore</h5></div>
+                <div className='navAlign'><h5><img src={Ico} alt="" style={{width:"30px",height:"30px"}}/>OhStore</h5></div>
                     <ul className='navLink' style={{alignSelf:'center'}}>
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to="/shop">Shop</Link></li>

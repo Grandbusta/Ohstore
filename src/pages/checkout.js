@@ -6,6 +6,7 @@ import {Form,Col, Button} from 'react-bootstrap'
 import {FaShoppingCart} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import Loading from '../components/loading'
+import EmptyDiv from '../components/empty'
 
 function Checkout() {
     const {cart,totalAmount}=useSelector(state=>state.cart)
@@ -20,12 +21,7 @@ function Checkout() {
         return <Redirect to='/success'/>
     }else if(!cart.length){
         return(
-        <div style={{width:'100%',justifyContent:'center',alignItems:'center',color:'blue',height:'100%'}}>
-            <h1 style={{textAlign:'center'}}>No product Added to cart</h1>
-            <div style={{display:'flex',alignItems:'center',width:'100%',justifyContent:'center'}}>
-            <Link to='/shop'><Button>Continue shopping</Button></Link>
-            </div>
-        </div>
+            <EmptyDiv/>
         )
     }else{
         if(order.error){

@@ -22,7 +22,7 @@ export const productFailure=(error)=>{
 export const fetchProduct=()=>{
     return (dispatch)=>{
         dispatch(productRequest())
-        axios.get('http://localhost:9000/products').then((res=>{
+        axios.get('https://ohstore.herokuapp.com/products').then((res=>{
             const products=res.data.data
             dispatch(productSucess(products))
         })).catch((err)=>{

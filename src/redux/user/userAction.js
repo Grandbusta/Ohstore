@@ -68,7 +68,7 @@ export const signupFailure=(error)=>{
 export const fetchSignUp=(data)=>{
     return (dispatch)=>{
         dispatch(signupRequest())
-        axios.post('http://localhost:9000/users/signup',{
+        axios.post('https://ohstore.herokuapp.com/users/signup',{
             firstname:data.firstname,
             lastname:data.lastname,
             email:data.email,
@@ -84,7 +84,7 @@ export const fetchSignUp=(data)=>{
 export const fetchLogin=(data)=>{
     return (dispatch)=>{
         dispatch(loginRequest())
-        axios.post('http://localhost:9000/users/login',{
+        axios.post('https://ohstore.herokuapp.com/login',{
             email:data.email,
             password:data.password
         }).then((res)=>{
