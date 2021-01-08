@@ -23,6 +23,7 @@ function Login() {
                         <div className='line'></div>
                     </div>
                     <p style={{color:'red',textAlign:'center'}}>{data.error?data.error:''}</p>
+                    <p style={{color:'red',textAlign:'center'}}>{data.error===undefined?'User does not exist':''}</p>
                     <Form>
                         <Form.Group>
                             <Form.Label>Email:</Form.Label>

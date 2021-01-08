@@ -9,13 +9,13 @@ import Loading from '../components/loading'
 function Signup() {
     const {firstname,lastname,email,password}=useSelector(state=>state.SignupDetails)
     const data=useSelector(state=>state.Signup)
-    const data=useSelector(state=>state.Login)
+    const Ldata=useSelector(state=>state.Login)
     const dispatch=useDispatch()
     if(data.success){
         return(
             <Redirect to='/login'/>
         )
-    }else if(data.token){
+    }else if(Ldata.token){
         return <Redirect to='/'/>
     }else if(data.loading){
         return<Loading/>
