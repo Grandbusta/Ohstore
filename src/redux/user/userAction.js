@@ -16,11 +16,7 @@ export const updateLogin=(name,value)=>{
         payload:{name,value}
     }
 }
-export const emptyLogin=()=>{
-    return{
-        type:"EMPTY_LOGIN_DETAILS"
-    }
-}
+
 
 export const loginRequest=()=>{
     return{
@@ -79,8 +75,8 @@ export const fetchSignUp=(data)=>{
             email:data.email,
             password:data.password
         }).then((res)=>{
-            dispatch(emptyLogin())
             dispatch(signupSuccess())
+            window.location.reload()
         }).catch((err)=>{
             dispatch(signupFailure(err.response.data.message))
         })
@@ -90,12 +86,13 @@ export const fetchSignUp=(data)=>{
 export const fetchLogin=(data)=>{
     return (dispatch)=>{
         dispatch(loginRequest())
-        axios.post('https://ohstore.herokuapp.com/login',{
+        axios.post('https://ohstore.herokuapp.com/users/login',{
             email:data.email,
             password:data.password
         }).then((res)=>{
             dispatch(loginSuccess(res.data.token))
         }).catch((err)=>{
+            console.log(err)
             dispatch(loginFailure(err.response.data.message))
         })
     }

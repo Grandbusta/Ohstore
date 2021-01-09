@@ -15,6 +15,9 @@
 .empty {
   width: 30%;
 }
+.correct {
+  width: 20%;
+}
 .loader {
   margin-top: 10%;
   border: 16px solid #f3f3f3;

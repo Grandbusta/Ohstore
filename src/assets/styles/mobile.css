@@ -19,6 +19,9 @@
   .empty {
     width: 100%;
   }
+  .correct {
+    width: 80%;
+  }
   .search {
     display: none;
   }
